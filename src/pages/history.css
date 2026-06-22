@@ -1,0 +1,387 @@
+/* ============================================================
+   History.css  — import this in History.jsx or index.css
+   Depends on the shared design tokens in index.css (:root)
+   ============================================================ */
+
+/* ── ENTRY ANIMATION ── */
+@keyframes hist-fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes hist-fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes hist-threadGrow {
+  from { transform: scaleY(0); }
+  to   { transform: scaleY(1); }
+}
+@keyframes hist-glow {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 0.9; }
+}
+@keyframes hist-orb {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(-22px) scale(1.05); }
+}
+@keyframes hist-dotPop {
+  0%  { transform: translate(-50%, -50%) scale(0); }
+  70% { transform: translate(-50%, -50%) scale(1.3); }
+  100%{ transform: translate(-50%, -50%) scale(1); }
+}
+
+/* ── ROOT ── */
+.hist-root {
+  min-height: 100svh;
+  background: var(--c-ivory);
+  font-family: var(--f-body);
+}
+
+/* ══════════════════════════════
+   HERO
+══════════════════════════════ */
+.hist-hero {
+  position: relative;
+  background: linear-gradient(155deg, var(--c-ink) 0%, var(--c-purple) 55%, #1A0535 100%);
+  padding: 7rem 1.5rem 5rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hist-hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.hist-hero-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+}
+.hist-hero-orb--1 {
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, rgba(124,58,237,0.5) 0%, transparent 70%);
+  top: -80px; left: -60px;
+  animation: hist-orb 11s ease-in-out infinite;
+}
+.hist-hero-orb--2 {
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(201,168,76,0.3) 0%, transparent 70%);
+  bottom: -40px; right: -40px;
+  animation: hist-orb 14s ease-in-out infinite 2s;
+}
+.hist-hero-cross {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 320px; height: 320px;
+  opacity: 1;
+}
+
+.hist-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  margin: 0 auto 3rem;
+}
+
+.hist-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--c-gold-light);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+}
+.hist-eyebrow::before,
+.hist-eyebrow::after {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 1px;
+  background: var(--c-gold);
+  opacity: 0.6;
+}
+
+.hist-hero-title {
+  font-family: var(--f-display);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.0;
+  color: var(--c-white);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+  animation: hist-fadeUp 0.8s ease both;
+}
+.hist-title-italic {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--c-gold-light);
+  font-size: 0.65em;
+  margin-top: 0.2em;
+}
+
+.hist-hero-lead {
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  color: rgba(255,255,255,0.68);
+  line-height: 1.75;
+  max-width: 540px;
+  margin: 0 auto;
+  animation: hist-fadeUp 0.8s ease 0.15s both;
+}
+
+/* ── LANGUAGE SWITCHER ── */
+.hist-lang-switcher {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  gap: 0.5rem;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--r-full);
+  padding: 0.35rem;
+  animation: hist-fadeIn 0.8s ease 0.3s both;
+}
+
+.hist-lang-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.6rem 1.3rem;
+  border-radius: var(--r-full);
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.55);
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+  font-family: var(--f-body);
+  line-height: 1;
+}
+.hist-lang-btn:hover {
+  color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.06);
+}
+.hist-lang-btn--active {
+  background: linear-gradient(135deg, var(--c-gold), var(--c-gold-light));
+  color: var(--c-purple) !important;
+  box-shadow: 0 2px 14px rgba(201,168,76,0.4);
+}
+
+.hist-lang-script {
+  font-family: var(--f-display);
+  font-size: 1rem;
+  font-weight: 700;
+}
+.hist-lang-name {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+/* ══════════════════════════════
+   TIMELINE
+══════════════════════════════ */
+.hist-timeline-section {
+  padding: 5rem 1.5rem 4rem;
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hist-timeline-wrap {
+  position: relative;
+  padding: 2rem 0;
+}
+
+/* The sacred thread */
+.hist-thread {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  pointer-events: none;
+}
+.hist-thread-line {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    var(--c-gold-dim) 8%,
+    var(--c-gold) 50%,
+    var(--c-gold-dim) 92%,
+    transparent 100%
+  );
+  transform-origin: top center;
+  animation: hist-threadGrow 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.hist-thread-glow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    transparent, var(--c-gold-light), transparent
+  );
+  filter: blur(4px);
+  animation: hist-glow 3s ease-in-out infinite;
+}
+
+/* ── MILESTONE ── */
+.hist-milestone {
+  display: grid;
+  grid-template-columns: 1fr 0 1fr;
+  align-items: start;
+  margin-bottom: 3.5rem;
+  position: relative;
+  gap: 0 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.55s ease var(--delay, 0s), transform 0.55s ease var(--delay, 0s);
+}
+.hist-milestone.hist-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Left-side card: card on the left, dot in middle */
+.hist-milestone--left {
+  grid-template-areas: "card . empty";
+}
+.hist-milestone--left .hist-card  { grid-area: card; text-align: right; }
+.hist-milestone--left .hist-dot   { left: 50%; }
+
+/* Right-side card: card on the right */
+.hist-milestone--right {
+  grid-template-areas: "empty . card";
+}
+.hist-milestone--right .hist-card  { grid-area: card; text-align: left; }
+.hist-milestone--right .hist-dot   { left: 50%; }
+
+/* Dot */
+.hist-dot {
+  position: absolute;
+  top: 1.1rem;
+  transform: translateX(-50%);
+  width: 16px; height: 16px;
+  z-index: 2;
+}
+.hist-dot-inner {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, var(--c-gold), var(--c-gold-light));
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px var(--c-ivory), 0 0 0 6px rgba(201,168,76,0.35);
+  animation: hist-dotPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  animation-delay: var(--delay, 0s);
+}
+
+/* Card */
+.hist-card {
+  background: var(--c-white);
+  border: 1px solid rgba(59,7,100,0.07);
+  border-radius: var(--r-xl);
+  padding: 1.75rem 2rem;
+  box-shadow: 0 2px 20px rgba(59,7,100,0.07);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  cursor: default;
+}
+.hist-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(59,7,100,0.14);
+  border-color: rgba(201,168,76,0.3);
+}
+
+.hist-year {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--c-gold-dim);
+  background: linear-gradient(135deg, rgba(201,168,76,0.12), rgba(201,168,76,0.05));
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: var(--r-full);
+  padding: 0.25rem 0.75rem;
+  margin-bottom: 0.7rem;
+}
+
+.hist-card-title {
+  font-family: var(--f-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--c-purple);
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
+}
+
+.hist-card-body {
+  font-size: 0.92rem;
+  color: var(--c-gray-600);
+  line-height: 1.75;
+}
+
+/* ── CLOSING SEAL ── */
+.hist-seal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  position: relative;
+}
+.hist-seal-ring {
+  width: 52px; height: 52px;
+  border-radius: 50%;
+  border: 2px solid var(--c-gold);
+  opacity: 0.35;
+  position: absolute;
+}
+.hist-seal-cross {
+  font-size: 1.5rem;
+  color: var(--c-gold);
+  opacity: 0.7;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 640px) {
+  .hist-timeline-wrap { padding-left: 2rem; }
+  .hist-thread         { left: 0; }
+  .hist-milestone {
+    grid-template-columns: 1fr;
+    grid-template-areas: "card" !important;
+    padding-left: 2.25rem;
+  }
+  .hist-milestone--left .hist-card,
+  .hist-milestone--right .hist-card {
+    text-align: left;
+  }
+  .hist-dot { left: 0 !important; }
+  .hist-dot-inner {
+    box-shadow: 0 0 0 3px var(--c-ivory), 0 0 0 5px rgba(201,168,76,0.35);
+  }
+}
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  .hist-thread-line { animation: none; transform: none; }
+  .hist-thread-glow { animation: none; }
+  .hist-dot-inner   { animation: none; }
+  .hist-milestone   { transition: none; }
+  .hist-hero-title, .hist-hero-lead { animation: none; }
+}
+.dark .hist-card {
+  background: #1e1e2a;
+  border-color: rgba(255,255,255,0.08);
+}
+
+.dark .hist-card-body {
+  color: #b0b0c0;
+}
