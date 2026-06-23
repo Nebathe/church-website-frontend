@@ -30,7 +30,7 @@ function App() {
           <Route path="/annual-plan" element={<AnnualPlan />} />
           <Route path="/prayer" element={<PrayerWall />} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/test-lang" element={<TestLang />} />
+          <Route path="/test-lang" element={<Testlang />} />
         </Routes>
       </main>
       <Footer />
