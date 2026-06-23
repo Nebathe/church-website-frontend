@@ -11,7 +11,7 @@ import Contact from './pages/Contact';
 import Admin from './pages/Admin';
 import PrayerWall from './pages/PrayerWall';
 import Gallery from './pages/Gallery';
-import AnnualPlan from './pages/AnnualPlan';
+import Annualplan from './pages/Annualplan';
 import TestLang from './pages/TestLang';
 
 function App() {
