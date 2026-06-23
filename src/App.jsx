@@ -12,7 +12,7 @@ import Admin from './pages/Admin';
 import PrayerWall from './pages/PrayerWall';
 import Gallery from './pages/Gallery';
 import Annualplan from './pages/Annualplan';
-import TestLang from './pages/Testlang';
+import TestLang from './pages/langtest';
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
           <Route path="/annual-plan" element={<AnnualPlan />} />
           <Route path="/prayer" element={<PrayerWall />} />
           <Route path="/gallery" element={<Gallery />} />
-          <Route path="/test-lang" element={<Testlang />} />
+          <Route path="/test-lang" element={<TestLang />} />
         </Routes>
       </main>
       <Footer />
