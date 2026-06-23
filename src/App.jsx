@@ -12,7 +12,7 @@ import Admin from './pages/Admin';
 import PrayerWall from './pages/PrayerWall';
 import Gallery from './pages/Gallery';
 import Annualplan from './pages/Annualplan';
-import TestLang from './pages/TestLang';
+import TestLang from './pages/Testlang';
 
 function App() {
   return (
